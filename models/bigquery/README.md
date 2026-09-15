@@ -1,9 +1,9 @@
-### 📊 Data Cost Observability (GCP)
+### 📊 BigQuery Cost Observability
 
 #### 📌 Project Overview
 This project demonstrates a data pipeline focused on Data Cost Observability using Google Cloud Platform (GCP) and analytics engineering best practices.
 
-The main goal is to simulate a scenario where raw data is ingested, transformed, documented, tested, and visualized through a dashboard to support cost monitoring.
+The main goal is to demonstrate how raw usage data can be transformed, documented, tested, and visualized to support BigQuery cost monitoring.
 
 #### 📊 Live Dashboard (Tableau Public)
 Explore the Cost Observability Dashboard:
@@ -16,23 +16,23 @@ This dashboard provides visibility into BigQuery processing costs, key cost driv
 Data Flow:
 1. Mock data generation using Python
 2. Raw data ingestion into BigQuery
-3. Data Transformation and Modeling using DBT
-4. Data Quality Tests and Documentation with DBT
+3. Data Transformation and Modeling using dbt
+4. Data Quality Tests and Documentation with dbt
 5. Refined data ingestion into BigQuery
 6. Cost Dashboard built in Tableau
 
 #### 🧰 Tech Stack
 - Data Warehouse: BigQuery
-- Transformation Tool: DBT
+- Transformation Tool: dbt
 - Data Visualization: Tableau
 - Version Control: GitHub
 
 #### 🧪 Data Modeling & Quality
-The transformation layer was built using DBT:
+The transformation layer was built using dbt:
 - Staging model to standardize raw data
 - Mart models to optimize data for analytics and reporting
 - Generic tests: unique, not null and acceptable values
-- Documentation using DBT docs
+- Documentation using dbt docs
 
 #### 📊 Dashboard Highlights
 - KPIs (Jobs, TBytes, Price, Users, Projects)
@@ -43,8 +43,8 @@ The transformation layer was built using DBT:
 
 
 #### 🎯 Key Skills Demonstrated
-- Cloud data ingestion and storage
-- Analytics engineering with DBT
+- Cloud data warehousing and analytics
+- Analytics engineering with dbt
 - Data quality testing and documentation
 - Cost observability concepts
 - Data visualization
