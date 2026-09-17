@@ -23,6 +23,8 @@ SELECT
     ,CAST(creation_time AS DATE) AS creation_date
     ,query
     ,total_bytes_processed
+    ,CAST(total_bytes_processed*50/POWER(1024, 4) AS NUMERIC) AS total_tbytes_processed
+    ,CAST((total_bytes_processed*50/POWER(1024, 4))*6.25 AS NUMERIC) AS total_cost
     ,statement_type
 FROM bq
 WHERE statement_type IS NULL OR statement_type != 'SCRIPT' 

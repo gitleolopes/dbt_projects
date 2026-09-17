@@ -19,6 +19,10 @@ models:
           - not_null
       - name: total_bytes_processed
         description: Total bytes processed by the job.
+      - name: total_tbytes_processed
+        description: Total tbytes processed by the job.
+      - name: total_cost
+        description: Total processing cost by the job.
       - name: creation_date
         description: Creation date of this job.
         tests:
