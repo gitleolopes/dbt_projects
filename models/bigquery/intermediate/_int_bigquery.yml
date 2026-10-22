@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: int_bigquery_costs
+    description: Intermediate table created to centralize cost and TB processed metrics.
+    columns:
+      - name: job_id
+        description: The ID of the job
+        tests:
+          - unique
+          - not_null
+      - name: total_bytes_processed
+        description: Total bytes processed by the job.
+        tests:
+          - not_null
+      - name: total_tbytes_processed
+        description: Total tbytes processed by the job.
+        tests:
+          - not_null
+      - name: total_cost
+        description: Total processing cost by the job.
+        tests:
+          - not_null
+
+  - name: int_users_anonymized
+    description: Intermediate table created to centralize user email addresses and their anonymized counterparts.
+    columns:
+      - name: user_email
+        description: Email address.
+        tests:
+          - not_null
+      - name: user_anonymized
+        description: User annonymized.
+        tests:
+          - not_null

@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: fct_bigquery
-    description: Bigquery jobs and processing. SCRIPT statements are excluded because they do not represent direct cost drivers.
+    description: Bigquery jobs and processing. 
     columns:
       - name: job_id
         description: The ID of the job
@@ -13,21 +13,44 @@ models:
         description:  Email address or service account of the user who ran the job.
         tests:
           - not_null
+      - name: manager_email
+        description: Manager's email address associated with the user who ran the job.
+        tests:
+          - not_null
       - name: project_id
         description: The ID of the project.
         tests:
           - not_null
-      - name: total_bytes_processed
-        description: Total bytes processed by the job.
-      - name: total_tbytes_processed
-        description: Total tbytes processed by the job.
-      - name: total_cost
-        description: Total processing cost by the job.
       - name: creation_date
         description: Creation date of this job.
         tests:
           - not_null
+      - name: total_tbytes_processed
+        description: Total tbytes processed by the job.
+      - name: total_cost
+        description: Total processing cost by the job.
       - name: query
         description: SQL query text.
-      
+      - name: statement_type
+        description: The type of query statement. For example, DELETE, INSERT, SCRIPT, SELECT, or UPDATE. SCRIPT statements are excluded because they do not represent direct cost drivers.
 
+  - name: fct_bigquery_aggregated
+    description: BigQuery jobs aggregated by date, project, and user. Users are anonymized.
+    columns:
+      - name: creation_date
+        description: Creation date of this job.
+        tests:
+          - not_null
+      - name: project_id
+        description: The ID of the project.
+        tests:
+          - not_null
+      - name: user_anonymized
+        description: User annonymized.
+      - name: qtd_jobs
+        description: Total number of jobs executed by the user.
+      - name: total_tbytes_processed
+        description: Total tbytes processed.
+      - name: total_cost
+        description: Total processing cost.
+        
