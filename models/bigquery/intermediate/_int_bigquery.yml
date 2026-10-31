@@ -1,6 +1,53 @@
 version: 2
 
 models:
+  - name: int_bigquery_eligible_jobs
+    description: Intermediate model created to centralize the filtering logic for eligible BigQuery jobs. 
+    columns:
+      - name: job_id
+        description: The ID of the job
+        tests:
+          - not_null
+          - unique
+
+      - name: user_email
+        description:  Email address or service account of the user who ran the job.
+        tests:
+          - not_null
+
+      - name: project_id
+        description: The ID of the project.
+        tests:
+          - not_null
+
+      - name: statement_type
+        description: The type of query statement. For example, DELETE, INSERT, SELECT, or UPDATE.
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["SELECT", "INSERT", "UPDATE", "DELETE"]
+      
+      - name: creation_time
+        description: Creation time of this job.
+      - name: start_time
+        description: This field represents the time when the job transitions from the PENDING state to either RUNNING or DONE.
+      - name: end_time
+        description: This field represents the time when the job enters the DONE state.
+      - name: job_type
+        description: The type of the job. Can be QUERY, LOAD, EXTRACT, COPY, or NULL.
+      - name: query
+        description: SQL query text.
+      - name: total_bytes_processed
+        description: Total bytes processed by the job.
+      - name: total_bytes_billed
+        description: If the project is configured to use on-demand pricing, then this field contains the total bytes billed for the job.
+      - name: slot_ms
+        description: Slot milliseconds for the job over its entire duration in the RUNNING state, including retries.
+      - name: cache_hit
+        description: Whether the query results of this job were from a cache.
+      - name: state
+        description: Running state of the job. Valid states include PENDING, RUNNING, and DONE.
+
   - name: int_bigquery_costs
     description: Intermediate table created to centralize cost and TB processed metrics.
     columns:
