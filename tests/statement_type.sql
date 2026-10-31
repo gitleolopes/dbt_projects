@@ -1,1 +1,0 @@
-SELECT * FROM {{ ref('fct_bigquery') }} WHERE statement_type = "SCRIPT"

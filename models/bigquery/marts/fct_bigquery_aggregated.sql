@@ -12,7 +12,7 @@
 }}
 
 WITH bigquery_data AS(
-    SELECT * FROM {{ ref('stg_bigquery') }}
+    SELECT * FROM {{ ref('int_bigquery_eligible_jobs') }}
 )
 
 ,int_bigquery AS (
@@ -34,5 +34,4 @@ LEFT JOIN int_users
 ON bq.user_email = int_users.user_email
 LEFT JOIN int_bigquery int_bq
 ON bq.job_id = int_bq.job_id
-WHERE statement_type IS NULL OR statement_type != 'SCRIPT' 
 GROUP BY ALL

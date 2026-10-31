@@ -15,7 +15,7 @@
 
 
 WITH bq AS(
-    SELECT * FROM {{ref("stg_bigquery")}}
+    SELECT * FROM {{ref("int_bigquery_eligible_jobs")}}
 )
 
 ,int_bigquery AS (
@@ -41,4 +41,3 @@ LEFT JOIN int_bigquery int_bq
 ON bq.job_id = int_bq.job_id
 LEFT JOIN manager
 ON bq.user_email = manager.user_email
-WHERE statement_type IS NULL OR statement_type != 'SCRIPT' 
